@@ -1,12 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 {
-	"name": "Red Hat",
-	"build": {
-        "dockerfile": "Containerfile"
+    "name": "Red Hat",
+    "build": {
+    "dockerfile": "Containerfile"
     },
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {
             "installZsh": "false",
             "installOhMyZsh": "false",
@@ -19,7 +19,6 @@
         "ghcr.io/devcontainers/features/python:1": {
             "version": "latest",
             "optimize": "true"
-
         }
     },
 
@@ -41,7 +40,7 @@
 	// Set default user
 	"containerUser": "vscode",
 
-	// Configure container environment variable
+    // Configure container environment variable
     "containerEnv": {
         "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}",
         "DISPLAY": "${localEnv:HOST_DISPLAY}",
@@ -49,13 +48,11 @@
         "XDG_SESSION_TYPE": "${localEnv:XDG_SESSION_TYPE}"
     },
 
-	// Toolbx inspired arguments to allow for Yubikey SSH key signing
+    // SELinux Configuration and use host ssh files
+    "securityOpt": [ "label=disable" ],
+
     "runArgs": [
         "--userns=keep-id",
-        "--security-opt",
-        "label=disable",
-        "--format=docker",
-        "--ipc=host",
         "--volume=${localEnv:HOME}/.ssh:/home/vscode/.ssh:ro,rslave"
     ]
 }
