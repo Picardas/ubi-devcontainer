@@ -54,6 +54,7 @@
         "--userns=keep-id",
         "--security-opt",
         "label=disable",
+        "--format=docker",
         "--ipc=host",
         "--volume=${localEnv:HOME}/.ssh:/home/vscode/.ssh:ro,rslave"
     ]
