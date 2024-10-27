@@ -15,10 +15,6 @@
 			"userUid": "1000",
 			"userGid": "1000",
             "upgradePackages": "true"
-        },
-        "ghcr.io/devcontainers/features/python:1": {
-            "version": "latest",
-            "optimize": "true"
         }
     },
 
