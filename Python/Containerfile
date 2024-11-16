@@ -1,4 +1,25 @@
 FROM registry.access.redhat.com/ubi9/ubi-minimal
-RUN microdnf install --nodocs --setopt install_weak_deps=0 -y tar  \
-    && microdnf clean all -y
-RUN rpm -ivhe --nodeps https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+RUN  <<EOF
+microdnf install --nodocs --setopt install_weak_deps=0 -y tar
+microdnf clean all -y
+rpm -ivhe --nodeps https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+cat <<'NESTED_EOF' >> /etc/inputrc
+
+$if Bash
+	# Tab menu complete
+	set show-all-if-ambiguous on
+	set show-all-if-unmodified on
+	set menu-complete-display-prefix on
+	set colored-completion-prefix on
+	set colored-stats on
+	set completion-ignore-case on
+	TAB: menu-complete
+$endif
+
+# Better history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+NESTED_EOF
+EOF
+
+USER vscode
