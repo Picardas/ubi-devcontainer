@@ -35,8 +35,8 @@
 	"customizations": {
 		"vscode": {
             "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.selectInterpreter": "/usr/local/bin/python",
+                "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+                "python.selectInterpreter": "/usr/local/python/current/bin/python",
                 "python.analysis.completeFunctionParens": true,
                 "[python]": {
                     "editor.rulers": [
